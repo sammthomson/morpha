@@ -6,11 +6,11 @@
     <artifactId>oss-parent</artifactId>
     <version>7</version>
   </parent>
-  <groupId>edu.washington.cs.knowitall</groupId>
-  <artifactId>morpha-stemmer</artifactId>
-  <version>1.0.4-SNAPSHOT</version>
+  <groupId>com.samthomson</groupId>
+  <artifactId>morpha</artifactId>
+  <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
-  <name>morpha-stemmer</name>
+  <name>morpha</name>
   <description>A utility for lemmatizing word tokens.</description>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -32,9 +32,14 @@
   </licenses>
   <developers>
     <developer>
+      <name>Sam Thomson</name>
+      <email>samt@cs.cmu.edu</email>
+      <organization>Carnegie Mellon University</organization>
+    </developer>
+    <developer>
       <name>Michael Schmitz</name>
       <email>schmmd@cs.washington.edu</email>
-      <organization>Univerisity of Washington</organization>
+      <organization>University of Washington</organization>
     </developer>
     <developer>
       <name>John Carroll</name>
@@ -54,9 +59,9 @@
     </developer>
   </developers>
   <scm>
-    <url>https://github.com/knowitall/morpha</url>
-    <connection>scm:git://github.com/knowitall/morpha.git</connection>
-    <developerConnection>scm:git://git@github.com:knowitall/morpha.git</developerConnection>
+    <url>https://github.com/sammthomson/morpha</url>
+    <connection>scm:git://github.com/sammthomson/morpha.git</connection>
+    <developerConnection>scm:git://git@github.com:sammthomson/morpha.git</developerConnection>
   </scm>
   <build>
     <plugins>

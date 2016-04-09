@@ -7,7 +7,7 @@ techniques that returns the lemma and inflection type of a word, given the word
 form and its part of speech. (The latter is optional but accuracy is degraded
 if it is not present).
 
-Converted to Java using JFlex.  The class is not threadsafe.
+Converted to Java using JFlex.
 
 
 README FROM ORIGINAL MORPHA DISTRIBUTION
