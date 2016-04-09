@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/sammthomson/morpha.svg?branch=master)](https://travis-ci.org/sammthomson/morpha)
+
 Morpha Stemmer
 ==============
 
