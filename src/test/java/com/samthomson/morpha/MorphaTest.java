@@ -41,6 +41,14 @@ public class MorphaTest {
     }
 
     @Test
+    public void testNoExceptionOnWS() {
+        assertEquals("a b", getLemma("a b", "JJ"));
+        assertEquals("a\tb", getLemma("a\tb", "JJ"));
+        assertEquals("a\nb", getLemma("a\nb", "JJ"));
+        assertEquals("a\rb", getLemma("a\rb", "JJ"));
+    }
+
+    @Test
     public void testAngleBracketsHandled() {
         // getLemma used to throw "java.lang.Error: Error: could not match input" for ">"
         assertEquals(">", getLemma(">", "JJR"));
