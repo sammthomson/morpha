@@ -1,71 +1,70 @@
 package com.samthomson.morpha;
 
+import com.samthomson.morpha.Morpha.Lemma;
 import org.junit.Test;
 
-import static com.samthomson.morpha.Morpha.getLemma;
+import static com.samthomson.morpha.Morpha.stem;
 import static org.junit.Assert.assertEquals;
 
 
 public class MorphaTest {
     @Test
     public void testWithoutPos() {
-        assertEquals("find", getLemma("found"));
-        assertEquals("find", getLemma("finding"));
-        assertEquals("fall", getLemma("fell"));
+        assertEquals(Lemma.apply("find", "ed"), stem("found"));
+        assertEquals(Lemma.apply("find", "ing"), stem("finding"));
+        assertEquals(Lemma.apply("fall", "ed"), stem("fell"));
     }
 
     @Test
-    public void testWordIsLowercased() {
-        final String lemma = getLemma("Nuclear", "JJ");
-        assertEquals("nuclear", lemma);
+    public void testLemmaIsLowercased() {
+        assertEquals(Lemma.apply("nuclear"), stem("Nuclear", "JJ"));
     }
 
     @Test
     public void testContractions() {
-        assertEquals("'s", getLemma("'s", "POS"));
-        assertEquals("have", getLemma("'ve", "VB"));
-        assertEquals("not", getLemma("n't", "RB"));
-        assertEquals("be", getLemma("'s", "VBZ"));
-        assertEquals("will", getLemma("'ll", "VB"));
-        assertEquals("be", getLemma("'re", "VBP"));
+        assertEquals(Lemma.apply("'s"),  stem("'s", "POS"));
+        assertEquals(Lemma.apply("have"),  stem("'ve", "VB"));
+        assertEquals(Lemma.apply("not"),  stem("n't", "RB"));
+        assertEquals(Lemma.apply("be", "s"), stem("'s", "VBZ"));
+        assertEquals(Lemma.apply("will"),  stem("'ll", "VB"));
+        assertEquals(Lemma.apply("be"),  stem("'re", "VBP"));
     }
 
     @Test
-    public void testIrregulars() {
-        assertEquals("fall", getLemma("fell", "VBD"));
-        assertEquals("find", getLemma("found", "VBD"));
-        assertEquals("find", getLemma("found", "VBN"));
-        //assertEquals("lie", getLemma("lay", "VBD"));
-        assertEquals("see", getLemma("saw", "VBD"));
-        //assertEquals("person", getLemma("people", "NNS"));
+    public void testIrregularPastTense() {
+        assertEquals(Lemma.apply("fall", "ed"), stem("fell", "VBD"));
+        assertEquals(Lemma.apply("find", "ed"), stem("found", "VBD"));
+        assertEquals(Lemma.apply("find", "ed"), stem("found", "VBN"));
+        assertEquals(Lemma.apply("see",  "ed"), stem("saw", "VBD"));
+        //assertEquals(Stem.apply("person", "s"), getStem("people", "NNS"));  // Morpha doesn't get this right. Oh well.
     }
 
     @Test
     public void testPosIsNotIgnored() {
-        assertEquals("see", getLemma("saw", "VBD"));
-        assertEquals("saw", getLemma("saw", "NN"));
+        assertEquals(Lemma.apply("see", "ed"), stem("saw", "VBD"));
+        assertEquals(Lemma.apply("saw"), stem("saw", "NN"));
     }
 
     @Test
-    public void testNoExceptionOnWS() {
-        assertEquals("a b", getLemma("a b", "JJ"));
-        assertEquals("a\tb", getLemma("a\tb", "JJ"));
-        assertEquals("a\nb", getLemma("a\nb", "JJ"));
-        assertEquals("a\rb", getLemma("a\rb", "JJ"));
+    public void testNoExceptionOnWhitespace() {
+        assertEquals(Lemma.apply("a b"), stem("a b",  "JJ"));
+        assertEquals(Lemma.apply("a\tb"), stem("a\tb", "JJ"));
+        assertEquals(Lemma.apply("a\nb"), stem("a\nb", "JJ"));
+        assertEquals(Lemma.apply("a\rb"), stem("a\rb", "JJ"));
     }
 
     @Test
     public void testAngleBracketsHandled() {
-        // getLemma used to throw "java.lang.Error: Error: could not match input" for ">"
-        assertEquals(">", getLemma(">", "JJR"));
-        assertEquals("<", getLemma("<", "JJR"));
+        // getStem used to throw "java.lang.Error: Error: could not match input" for ">"
+        assertEquals(Lemma.apply(">"), stem(">", "JJR"));
+        assertEquals(Lemma.apply("<"), stem("<", "JJR"));
     }
 
     @Test
     public void testNullIsRetained() {
         // regression test for https://github.com/knowitall/morpha/issues/1
-        // getLemma used to turn "null" into ""
-        assertEquals("null", getLemma("null", "JJ"));
-        assertEquals("null", getLemma("nulls", "NN"));
+        // getStem used to turn "null" into ""
+        assertEquals(Lemma.apply("null"), stem("null", "JJ"));
+        assertEquals(Lemma.apply("null", "s"), stem("nulls", "NN"));
     }
 }

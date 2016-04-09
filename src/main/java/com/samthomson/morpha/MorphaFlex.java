@@ -52515,7 +52515,6 @@ class MorphaFlex {
 		for (int j = 0; j < options.length; j++) {
 			options[j] = 1;
 		}
-		options[0] = 0;
 		if (!tags) {
 			yybegin(any);
 		} else {

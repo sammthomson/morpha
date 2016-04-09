@@ -14,15 +14,20 @@ Usage
 ---
 
 ```java
-import static com.samthomson.morpha.Morpha.getLemma;
+import com.samthomson.morpha.Morpha.Lemma;
+import static com.samthomson.morpha.Morpha.stem;
 
 // when part-of-speech tags are available:
-getLemma("saw", "VBD");  // "see"
-getLemma("saw", "NN");   // "saw"
+Lemma sawVerb = stem("saw", "VBD");  // Lemma(see, ed)
+sawVerb.lemma;  // "see"
+sawVerb.affix;  // "ed"
+Lemma sawNoun = stem("saw", "NN");  // Lemma(saw)
+sawNoun.lemma;   // "saw"
+sawNoun.affix;   // ""
 
 // when part-of-speech tags are not available a best effort is made:
-getLemma("saw");  // "see"
-getLemma("finding") // "find"
+stem("saw");    // Lemma("see", "ed")
+stem("finding") // Lemma("find", "ing")
 ```
 
 
