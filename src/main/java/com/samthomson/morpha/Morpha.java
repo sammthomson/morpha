@@ -5,31 +5,25 @@ import java.io.StringReader;
 
 
 public class Morpha {
-    public static String getLemma(String word,
-                                  String postag) {
-        if (word == null || postag == null || word.isEmpty()) return "";
-        final String token = word.toLowerCase();
-        final String cleanedInput = token.replaceAll("_", "-") + "_" + postag.toUpperCase();
-        return stemWithDefault(cleanedInput, true, token);
+    /** Tries to find the lemma for `word` without using part-of-speech info. */
+    public static String getLemma(String word) {
+        return getLemma(word, null);
     }
 
-    public static String getLemma(String word) {
+    /** Tries to find the lemma for `word` with part-of-speech `postag`. */
+    public static String getLemma(String word, String postag) {
         if (word == null || word.isEmpty()) return "";
         final String token = word.toLowerCase();
-        final String cleanedInput = token.replaceAll("_", "-");
-        return stemWithDefault(cleanedInput, false, token);
-    }
-
-    private static String stemWithDefault(String cleanedInput,
-                                          boolean hasPos,
-                                          String fallback) {
+        final String cleanedToken = token.replaceAll("_", "-");
+        final String cleanedInput = postag != null ? cleanedToken + "_" + postag.toUpperCase() : cleanedToken;
         try {
-            return new MorphaFlex(new StringReader(cleanedInput), hasPos).next();
+            final String result = new MorphaFlex(new StringReader(cleanedInput), postag != null).next();
+            return (result == null) ? "" : result;
         } catch (IOException e) {
-            return fallback;
+            return token;
         } catch (Error e) {
             if (e.getMessage().equals("Error: could not match input")) {
-                return fallback;
+                return token;
             } else {
                 throw e;
             }

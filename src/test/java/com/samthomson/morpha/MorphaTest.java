@@ -41,6 +41,12 @@ public class MorphaTest {
     }
 
     @Test
+    public void testPosIsNotIgnored() {
+        assertEquals("see", getLemma("saw", "VBD"));
+        assertEquals("saw", getLemma("saw", "NN"));
+    }
+
+    @Test
     public void testNoExceptionOnWS() {
         assertEquals("a b", getLemma("a b", "JJ"));
         assertEquals("a\tb", getLemma("a\tb", "JJ"));
