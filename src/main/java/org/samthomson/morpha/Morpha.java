@@ -1,4 +1,4 @@
-package com.samthomson.morpha;
+package org.samthomson.morpha;
 
 import java.io.IOException;
 import java.io.StringReader;

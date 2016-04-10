@@ -6,7 +6,7 @@
     <artifactId>oss-parent</artifactId>
     <version>7</version>
   </parent>
-  <groupId>com.samthomson</groupId>
+  <groupId>org.samthomson</groupId>
   <artifactId>morpha</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
@@ -40,13 +40,16 @@
       <name>Michael Schmitz</name>
       <email>schmmd@cs.washington.edu</email>
       <organization>University of Washington</organization>
+      <roles>
+        <role>Developer of original Java wrapper</role>
+      </roles>
     </developer>
     <developer>
       <name>John Carroll</name>
       <email>kwh@dcs.shef.ac.uk</email>
       <organization>University of Sheffield</organization>
       <roles>
-        <role>Developer of original lex files (not included)</role>
+        <role>Developer of original lex files</role>
       </roles>
     </developer>
     <developer>
@@ -54,7 +57,7 @@
       <organization>University of Sussex</organization>
       <email>john.carroll@cogs.susx.ac.uk</email>
       <roles>
-        <role>Developer of original lex files (not included)</role>
+        <role>Developer of original lex files</role>
       </roles>
     </developer>
   </developers>

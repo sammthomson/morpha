@@ -16,8 +16,8 @@ Usage
 ---
 
 ```java
-import com.samthomson.morpha.Morpha.Lemma;
-import static com.samthomson.morpha.Morpha.stem;
+import org.samthomson.morpha.Morpha.Lemma;
+import static org.samthomson.morpha.Morpha.stem;
 
 // when part-of-speech tags are available:
 Lemma sawVerb = stem("saw", "VBD");  // Lemma(see, ed)

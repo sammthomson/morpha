@@ -1,9 +1,9 @@
-package com.samthomson.morpha;
+package org.samthomson.morpha;
 
-import com.samthomson.morpha.Morpha.Lemma;
+import org.samthomson.morpha.Morpha.Lemma;
 import org.junit.Test;
 
-import static com.samthomson.morpha.Morpha.stem;
+import static org.samthomson.morpha.Morpha.stem;
 import static org.junit.Assert.assertEquals;
 
 
