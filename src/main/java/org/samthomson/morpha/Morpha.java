@@ -31,9 +31,10 @@ public final class Morpha {
         if (token == null || token.isEmpty()) return Lemma.apply("");
         final String lower = token.toLowerCase();
         final String cleanedToken = lower.replaceAll("_", "-");
-        final String cleanedInput = postag != null ? cleanedToken + "_" + postag.toUpperCase() : cleanedToken;
+        final boolean hasPostag = postag != null;
+        final String cleanedInput = hasPostag ? cleanedToken + "_" + postag.toUpperCase() : cleanedToken;
         try {
-            final MorphaFlex morpha = new MorphaFlex(new StringReader(cleanedInput), postag != null);
+            final MorphaFlex morpha = new MorphaFlex(new StringReader(cleanedInput), hasPostag);
             return parse(morpha.next());
         } catch (IOException e) {
             return Lemma.apply(lower);
