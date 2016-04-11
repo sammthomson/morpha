@@ -15,6 +15,27 @@ This is a fork/rewrite of [his Morpha wrapper](https://github.com/knowitall/morp
 throws fewer exceptions.
 
 
+Usage
+---
+
+```java
+import org.samthomson.morpha.Morpha.Lemma;
+import static org.samthomson.morpha.Morpha.stem;
+
+// when part-of-speech tags are available:
+Lemma sawVerb = stem("saw", "VBD");  // Lemma(see, ed)
+sawVerb.lemma;  // "see"
+sawVerb.affix;  // "ed"
+Lemma sawNoun = stem("saw", "NN");  // Lemma(saw)
+sawNoun.lemma;   // "saw"
+sawNoun.affix;   // ""
+
+// when part-of-speech tags are not available a best effort is made:
+stem("saw");    // Lemma("see", "ed")
+stem("finding") // Lemma("find", "ing")
+```
+
+
 Maven
 ---
 To use this library as a dependency, add the following to your `pom.xml`:
@@ -39,26 +60,6 @@ To use this library as a dependency, add the following to your `pom.xml`:
     <type>pom</type>
   </dependency>
 </dependencies>
-```
-
-Usage
----
-
-```java
-import org.samthomson.morpha.Morpha.Lemma;
-import static org.samthomson.morpha.Morpha.stem;
-
-// when part-of-speech tags are available:
-Lemma sawVerb = stem("saw", "VBD");  // Lemma(see, ed)
-sawVerb.lemma;  // "see"
-sawVerb.affix;  // "ed"
-Lemma sawNoun = stem("saw", "NN");  // Lemma(saw)
-sawNoun.lemma;   // "saw"
-sawNoun.affix;   // ""
-
-// when part-of-speech tags are not available a best effort is made:
-stem("saw");    // Lemma("see", "ed")
-stem("finding") // Lemma("find", "ing")
 ```
 
 
