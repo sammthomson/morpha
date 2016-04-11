@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/sammthomson/morpha.svg?branch=master)](https://travis-ci.org/sammthomson/morpha)
+[ ![Download](https://api.bintray.com/packages/sammthomson/maven/morpha/images/download.svg) ](https://bintray.com/sammthomson/maven/morpha/_latestVersion)
 
 Morpha Stemmer
 ==============
@@ -10,7 +11,35 @@ form and its part of speech. (The latter is optional but accuracy is degraded
 if it is not present).
 
 The original `.lex` and verb-stem files (see `src/main/resources`) were converted to Java using JFlex by Michael Schmitz <schmmd@cs.washington.edu>.
-This is a fork/rewrite of [his Morpha wrapper](https://github.com/knowitall/morpha).
+This is a fork/rewrite of [his Morpha wrapper](https://github.com/knowitall/morpha) which retains affix information and
+throws fewer exceptions.
+
+
+Maven
+---
+To use this library as a dependency, add the following to your `pom.xml`:
+```xml
+<repositories>
+  <repository>
+    <snapshots>
+      <enabled>false</enabled>
+    </snapshots>
+    <id>bintray-sammthomson-maven</id>
+    <name>bintray</name>
+    <url>http://dl.bintray.com/sammthomson/maven</url>
+  </repository>
+</repositories>
+```
+```xml
+<dependencies>
+  <dependency>
+    <groupId>org.samthomson</groupId>
+    <artifactId>morpha</artifactId>
+    <version>1.0</version>
+    <type>pom</type>
+  </dependency>
+</dependencies>
+```
 
 Usage
 ---
