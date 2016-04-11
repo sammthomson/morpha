@@ -45,9 +45,9 @@ To use this library as a dependency, add the following to your `pom.xml`:
     <snapshots>
       <enabled>false</enabled>
     </snapshots>
-    <id>bintray-sammthomson-maven</id>
+    <id>central</id>
     <name>bintray</name>
-    <url>http://dl.bintray.com/sammthomson/maven</url>
+    <url>http://jcenter.bintray.com</url>
   </repository>
 </repositories>
 ```
