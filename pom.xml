@@ -1,39 +1,39 @@
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-    <parent>
-    <groupId>org.sonatype.oss</groupId>
-    <artifactId>oss-parent</artifactId>
-    <version>7</version>
-  </parent>
   <groupId>org.samthomson</groupId>
   <artifactId>morpha</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <packaging>jar</packaging>
   <name>morpha</name>
-  <description>A utility for lemmatizing word tokens.</description>
+  <description>A utility for lemmatizing word tokens</description>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-  <url>http://www.informatics.sussex.ac.uk/research/groups/nlp/carroll/morph.html</url>
+  <url>https://github.com/sammthomson/morpha</url>
   <licenses>
     <license>
       <name>Academic License</name>
-      <url>http://www.informatics.sussex.ac.uk/research/groups/nlp/carroll/morph.tar.gz</url>
+      <url>http://www.informatics.sussex.ac.uk/research/groups/nlp/carroll/morph.html</url>
       <distribution>repo</distribution>
-      <comments>A research-restricted license.  This license accompanied the original lex files.</comments>
+      <comments>
+        A research-restricted license.
+        This license applies to the original lex files (in src/main/lex/) and the JFLEX-generated code (MorphaFlex.java).
+      </comments>
     </license>
     <license>
       <name>Apache 2</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
       <distribution>repo</distribution>
-      <comments>This license applies to the wrapper code, which eases the use of the JFLEX-generated code.</comments>
+      <comments>
+        This license applies to the wrapper code (Morpha.java), which eases the use of the JFLEX-generated code.
+      </comments>
     </license>
   </licenses>
   <developers>
     <developer>
       <name>Sam Thomson</name>
-      <email>samt@cs.cmu.edu</email>
+      <email>sthomson@cs.cmu.edu</email>
       <organization>Carnegie Mellon University</organization>
     </developer>
     <developer>
@@ -66,18 +66,51 @@
     <connection>scm:git://github.com/sammthomson/morpha.git</connection>
     <developerConnection>scm:git://git@github.com:sammthomson/morpha.git</developerConnection>
   </scm>
+  <distributionManagement>
+    <repository>
+      <id>bintray</id>
+      <url>https://api.bintray.com/maven/sammthomson/maven/morpha/</url>
+    </repository>
+  </distributionManagement>
   <build>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-release-plugin</artifactId>
-        <version>2.1</version>
-        <configuration>
-          <goals>deploy</goals>
-          <pushChanges>false</pushChanges>
-          <localCheckout>true</localCheckout>
-          <scmCommentPrefix>(release) </scmCommentPrefix>
-        </configuration>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>1.6</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
