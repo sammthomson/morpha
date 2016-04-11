@@ -1,8 +1,7 @@
 [![Build Status](https://travis-ci.org/sammthomson/morpha.svg?branch=master)](https://travis-ci.org/sammthomson/morpha)
 [ ![Download](https://api.bintray.com/packages/sammthomson/maven/morpha/images/download.svg) ](https://bintray.com/sammthomson/maven/morpha/_latestVersion)
 
-Morpha Stemmer
-==============
+# Morpha Stemmer
 
 This is a Java version of [the Morpha stemmer](http://www.informatics.sussex.ac.uk/research/groups/nlp/carroll/morph.html),
 a fast and robust morphological analyser for English based on finite-state
@@ -11,12 +10,11 @@ form and its part of speech. (The latter is optional but accuracy is degraded
 if it is not present).
 
 The original `.lex` and verb-stem files (see `src/main/resources`) were converted to Java using JFlex by Michael Schmitz <schmmd@cs.washington.edu>.
-This is a fork/rewrite of [his Morpha wrapper](https://github.com/knowitall/morpha) which retains affix information and
-throws fewer exceptions.
+This fork of [his Morpha wrapper](https://github.com/knowitall/morpha) has
+been rewritten to retain affix information and throw fewer exceptions.
 
 
-Usage
----
+## Usage
 
 ```java
 import org.samthomson.morpha.Morpha.Lemma;
@@ -36,8 +34,16 @@ stem("finding") // Lemma("find", "ing")
 ```
 
 
-Maven
----
+### SBT
+To use this library as a dependency, add the following to your `build.sbt`:
+```sbt
+libraryDependencies ++= Seq(
+  "org.samthomson" % "morpha" % "1.0"
+)
+```
+
+
+### Maven
 To use this library as a dependency, add the following to your `pom.xml`:
 ```xml
 <repositories>
@@ -57,14 +63,11 @@ To use this library as a dependency, add the following to your `pom.xml`:
     <groupId>org.samthomson</groupId>
     <artifactId>morpha</artifactId>
     <version>1.0</version>
-    <type>pom</type>
   </dependency>
 </dependencies>
 ```
 
-
-From the README for the original distribution:
----
+## From the README for the original distribution:
 ([full version](src/main/resources/README))
 
 > This directory contains software for morphological processing of English
