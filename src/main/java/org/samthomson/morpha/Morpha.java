@@ -90,8 +90,8 @@ public final class Morpha {
 
     /** A pair of `lemma` and `affix` */
     public static final class Lemma {
-        final String lemma;
-        final String affix;
+        public final String lemma;
+        public final String affix;
 
         private Lemma(String lemma, String affix) {
             this.lemma = lemma;
@@ -101,6 +101,13 @@ public final class Morpha {
         @Override
         public String toString() {
             return "Lemma(" + ((affix.length() == 0) ? lemma : lemma + ", " + affix) + ")";
+        }
+
+        @Override
+        public int hashCode() {
+            final int lemmaHash = lemma == null ? 0 : lemma.hashCode();
+            final int affixHash = affix == null ? 0 : affix.hashCode();
+            return 31 * lemmaHash + affixHash;
         }
 
         @Override
