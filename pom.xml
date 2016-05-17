@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.samthomson</groupId>
   <artifactId>morpha</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.1</version>
   <packaging>jar</packaging>
   <name>morpha</name>
   <description>A utility for lemmatizing word tokens</description>
@@ -106,7 +106,7 @@
         <version>1.6</version>
         <configuration>
           <!-- comment this out when deploying -->
-          <skip>true</skip>
+          <!--<skip>true</skip>-->
         </configuration>
         <executions>
           <execution>
