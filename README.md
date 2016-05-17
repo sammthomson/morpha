@@ -38,7 +38,7 @@ stem("finding") // Lemma("find", "ing")
 To use this library as a dependency, add the following to your `build.sbt`:
 ```sbt
 libraryDependencies ++= Seq(
-  "org.samthomson" % "morpha" % "1.0"
+  "org.samthomson" % "morpha" % "1.1"
 )
 ```
 
@@ -62,7 +62,7 @@ To use this library as a dependency, add the following to your `pom.xml`:
   <dependency>
     <groupId>org.samthomson</groupId>
     <artifactId>morpha</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
   </dependency>
 </dependencies>
 ```
