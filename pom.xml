@@ -106,7 +106,7 @@
         <version>1.6</version>
         <configuration>
           <!-- comment this out when deploying -->
-          <!--<skip>true</skip>-->
+          <skip>true</skip>
         </configuration>
         <executions>
           <execution>
